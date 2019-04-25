@@ -1,6 +1,8 @@
 
 import banco
 
+print(banco.lista_de_usuarios)
+
 # exercício 1:
 # Imprima somente os usuários 
 # cujos emails contenham as letras: 
@@ -34,3 +36,40 @@ condicao_2 = 20 < 40
 
 if condicao_1 and condicao_2:
   print('opaa')
+
+
+# Primeira parte
+for usuario in banco.lista_de_usuarios:
+
+  email = usuario['email'].lower()
+  idade = usuario['idade']
+
+  condicao_1 = 'a' in email
+  condicao_1 = condicao_1 or 'k' in email
+  condicao_1 = condicao_1 or 'm' in email
+  condicao_1 = condicao_1 or 'l' in email
+
+  condicao_2 = idade > 30 and idade < 40
+
+  if condicao_1 and condicao_2:
+    print(usuario)
+
+# Solução 2
+for usuario in banco.lista_de_usuarios:
+
+  chave_email = 'email'
+  chave_idade = 'idade'
+
+  email = usuario[chave_email].lower()
+  idade = usuario[chave_idade]
+
+  condicao_1 = False
+  letras = [ 'a', 'k', 'm', 'k' ]
+  for letra in letras:
+    condicao_1 = condicao_1 or letra in email
+  
+  condicao_2 = idade in range(30, 41)
+
+  if condicao_1 and condicao_2:
+    print(usuario)
+
